@@ -2,6 +2,23 @@
 #include <vector>
 using namespace std;
 
+int partition(vector<int> &arr, int lo, int hi) {
+  int iPartition = hi;
+  int iCurrent = lo;
+  while(true) {
+    if (arr[lo] > arr[hi]) {
+      swap(arr[lo], arr[hi - 1]);
+      swap(arr[hi - 1], arr[hi]);
+      iPartition--;
+    } else if(iPartition == iCurrent) {
+      break;
+    } else {
+      iCurrent++;
+    }
+  }
+  return iPartition;
+}
+
 void quickSort(vector<int> &arr, int lo = -1, int hi = -2) {
   if (lo == -1 && hi == -2) {
     lo = 0;
