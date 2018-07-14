@@ -30,13 +30,11 @@ int partition(vector<int> &arr, int lo, int hi) {
 }
 
 void quickSort(vector<int> &arr, int lo = -1, int hi = -2) {
-  cout << "called quicksort" << endl;
-  for (auto num : arr) cout << " " << num;
-  cout << endl;
-
-  if (lo == -1) lo = 0;
-  if (hi == -2) hi = arr.size() - 1;
-  if (lo == hi) return;
+  if (lo == -1 && hi == -2){
+    lo = 0;
+    hi = arr.size() - 1;
+  }
+  if (lo == hi || lo > hi) return;
 
   int p = partition(arr, lo, hi);
   quickSort(arr, lo, p - 1);
