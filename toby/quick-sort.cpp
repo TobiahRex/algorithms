@@ -1,7 +1,7 @@
 ///**********************************************************************************
 /// Description: Implementation of the classic Quick Sort
 /// Author: Tobiah Rex
-/// Date: July 13, 2018
+/// Date: July 14, 2018
 /// Status : Complete
 ///***********************************************************************************
 #include <iostream>
