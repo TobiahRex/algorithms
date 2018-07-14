@@ -6,21 +6,8 @@
 ///***********************************************************************************
 #include <iostream>
 #include <vector>
-// #include <string>
+#include <string>
 using namespace std;
-
-vector<int> splice(vector<int> &arr, int start, int stop) {
-  vector<int>::const_iterator right = arr.begin() + stop;
-  vector<int>::const_iterator left;
-
-  switch(start) {
-    case 0: left = arr.begin(); break;
-    default: left = arr.begin() + start;
-  }
-
-  vector<int> newArr(left, right);
-  return newArr;
-}
 
 void swap(int &num1, int &num2) {
   int temp = num1;
@@ -42,7 +29,11 @@ int partition(vector<int> &arr, int lo, int hi) {
   return hi;
 }
 
-void quickSort(vector<int> &arr, int lo{-1}, int hi{-2}) {
+void quickSort(vector<int> &arr, int lo = -1, int hi = -2) {
+  cout << "called quicksort" << endl;
+  for (auto num : arr) cout << " " << num;
+  cout << endl;
+
   if (lo == -1) lo = 0;
   if (hi == -2) hi = arr.size() - 1;
   if (lo == hi) return;
@@ -56,7 +47,7 @@ int main() {
   vector<int> nums = {3, 7, 8, 2, 1, 9, 5, 4};
   quickSort(nums);
 
-  for (auto num : sorted) cout << " " << num;
+  for (auto num : nums) cout << " " << num;
   cout << endl;
 
   return 0;
