@@ -47,13 +47,14 @@ using namespace std;
 // }
 template <typename T>
 T & Splice(vector<T> &arr, int &start, int &stop) {
-  vector<int>::const_iterator left; = nums.begin();
-  vector<int>::const_iterator right = nums.begin() + 4;
+  vector<int>::const_iterator right = nums.begin() + stop;
+  vector<int>::const_iterator left;
+
   switch(start) {
-    case 0: left = nums.begin();
+    case 0: left = nums.begin(); break;
     default: left = nums.begin() + start;
   }
-  right = nums.begin() + stop;
+
   vector<int> newArr(left, right);
   return newArr;
 }
