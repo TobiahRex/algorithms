@@ -19,13 +19,19 @@ function partition(arr, lo, hi) {
 
   while(true) {
     if (arr[iNext] > arr[iPartition]) {
-
-    }
+      swap(arr, iNext, iPartition - 1);
+      swap(arr, iPartition - 1, iPartition);
+      iPartition--;
+    } else if (iNext === iPartition) break;
+    else iNext++;
   }
+  return iPartition;
 }
 
 function swap(arr, i1, i2) {
-  const temp = arr[i1],
-    arr[i1] = arr[i2],
-    arr[i2]= temp;
+  const temp = arr[i1];
+  arr[i1] = arr[i2];
+  arr[i2]= temp;
 }
+
+main();
