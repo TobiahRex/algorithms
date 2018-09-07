@@ -6,8 +6,8 @@
 ///***********************************************************************************
 #include <iostream>
 #include <string>
-#include <regex>
 #include <limits>
+#include <vector>
 
 using namespace std;
 
@@ -20,28 +20,35 @@ int main() {
   };
 
   for (int i = 0; i < 2; i++) {
-    string subPrompt = i == 0 ? "Enter Year (e.g. 1 ,2 ,3 ,4): " : "Enter GPA (e.g. 2.0): ";
+    string subPrompt = i == 0 ? "Enter Year less than or equal to 4: " : "Enter GPA less than or equal to 4.0: ";
+    int invalidInput = true;
 
-    while(true) {
+    while(invalidInput) {
       cout << prompts[i] << endl << subPrompt;
       cin >> answers[i];
 
-      regex detectAlpha("[a-zA-Z]+");
-      if (regex_match(to_string(answers[i]), detectAlpha) || cin.bad() || cin.fail() || userInput > 100) {
-        cerr << error;
+      if (
+        cin.bad() ||
+        cin.fail() ||
+        answers[0] > 4 ||
+        answers[1] > 4.0 ||
+        answers[1] < 0.0
+      ) {
+        invalidInput = true;
+        cerr << prompts[2];
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
       } else {
-        break;
+        invalidInput = false;
       }
     }
   }
 
 
-  if (userInput >= 80.0) {
-    cout << "You Passed" << endl;
+  if (answers[0] >= 4 && answers[1] >= 2) {
+    cout << "You will be graduating this year." << endl;
   } else {
-    cout << "You Failed" << endl;
+    cout << "More school for you." << endl;
   }
-  
+  return 0;
 }

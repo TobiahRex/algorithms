@@ -5,13 +5,11 @@
 using namespace std;
 
 int main() {
-  vector<float> answers(2);
+  vector<float> x(1);
 
-  for (int i = 0; i < 2; i++) {
-    cin >> answers[i];
-  }
+  x[0] = 1.1;
 
-  for (auto n : answers) {
+  for (auto n : x) {
     cout << n << endl;
   }
 
