@@ -2,6 +2,11 @@
 #include <vector>
 using namespace std;
 
+// void swap(int &a, int &b);
+// int partition(vector<int> &arr, int lo, int hi);
+// void quickSort(vector<int> &arr);
+
+
 void swap(int &a, int &b) {
   int temp = a;
   a = b;
@@ -10,17 +15,16 @@ void swap(int &a, int &b) {
 
 int partition(vector<int> &arr, int lo, int hi) {
   int iPartition = hi;
-  int iCurrent = lo;
+  int iNext = lo;
 
   while(true) {
-    if (arr[iCurrent] > arr[iPartition]) {
-      swap(arr[iCurrent], arr[iPartition - 1]);
+    if(arr[iNext] > arr[iPartition]) {
+      swap(arr[iNext], arr[iPartition - 1]);
       swap(arr[iPartition - 1], arr[iPartition]);
       iPartition--;
-    } else if (iPartition == iCurrent) break;
-    else iCurrent++;
+    } else if (iNext == iPartition) break;
+    else iNext++;
   }
-
   return iPartition;
 }
 
@@ -36,8 +40,9 @@ void quickSort(vector<int> &arr, int lo = -1, int hi = -2) {
   quickSort(arr, p + 1, hi);
 }
 
+
 int main() {
-  vector<int> nums = {3,4,5,1,2,7,9,8,6};
+  vector<int> nums = {3,6,7,8,5,2,1,9,0};
   quickSort(nums);
 
   for (int num : nums) cout << " " << num;
