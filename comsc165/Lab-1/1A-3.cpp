@@ -12,35 +12,36 @@
 using namespace std;
 
 int main() {
-  float userInput = 0;
+  vector<float> answers(2);
   vector<string> prompts = {
     "What year are you in at college? \n",
     "What is your current GPA? \n",
     "That is not a valid input. Please try again."
   };
 
-  while(true) {
-    for (int i = 0; i < 2; i++) {
-      string subPrompt = i == 0 ? "Enter Year: " : "Enter GPA: ";
+  for (int i = 0; i < 2; i++) {
+    string subPrompt = i == 0 ? "Enter Year (e.g. 1 ,2 ,3 ,4): " : "Enter GPA (e.g. 2.0): ";
 
+    while(true) {
       cout << prompts[i] << endl << subPrompt;
-      cin >> userInput;
-    }
+      cin >> answers[i];
 
-    regex detectAlpha("[a-zA-Z]+");
-
-    if (regex_match(to_string(userInput), detectAlpha) || cin.bad() || cin.fail() || userInput > 100) {
-      cerr << error;
-      cin.clear();
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    } else {
-      break;
+      regex detectAlpha("[a-zA-Z]+");
+      if (regex_match(to_string(answers[i]), detectAlpha) || cin.bad() || cin.fail() || userInput > 100) {
+        cerr << error;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      } else {
+        break;
+      }
     }
   }
+
 
   if (userInput >= 80.0) {
     cout << "You Passed" << endl;
   } else {
     cout << "You Failed" << endl;
   }
+  
 }

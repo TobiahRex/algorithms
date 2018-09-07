@@ -5,13 +5,14 @@
 using namespace std;
 
 int main() {
-  vector<string> prompts = {
-    "string a",
-    "string b",
-  };
+  vector<float> answers(2);
 
-  for(auto p : prompts) {
-    cout << p << endl;
+  for (int i = 0; i < 2; i++) {
+    cin >> answers[i];
+  }
+
+  for (auto n : answers) {
+    cout << n << endl;
   }
 
   return 0;
