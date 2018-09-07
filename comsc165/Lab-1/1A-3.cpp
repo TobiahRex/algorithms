@@ -14,17 +14,16 @@ using namespace std;
 int main() {
   vector<float> answers(2);
   vector<string> prompts = {
-    "What year are you in at college? \n",
-    "What is your current GPA? \n",
-    "That is not a valid input. Please try again."
+    "Enter Year (1,2,3,4) of College: ",
+    "Enter GPA: ",
+    "\nThat is not a valid input. Please try again.\n\n"
   };
 
   for (int i = 0; i < 2; i++) {
-    string subPrompt = i == 0 ? "Enter Year less than or equal to 4: " : "Enter GPA less than or equal to 4.0: ";
     int invalidInput = true;
 
     while(invalidInput) {
-      cout << prompts[i] << endl << subPrompt;
+      cout << prompts[i];
       cin >> answers[i];
 
       if (
