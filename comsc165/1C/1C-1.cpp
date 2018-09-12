@@ -1,5 +1,5 @@
 ///**********************************************************************************
-/// Description: 1C-1
+/// Description: 1C-1 Ask user to enter 5 numbers and output the final average of all 5 numbers.
 /// Author: Tobiah Bickley
 /// COMSC 165 Section 8312
 /// Date: September 11, 2018
