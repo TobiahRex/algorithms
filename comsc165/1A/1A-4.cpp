@@ -23,6 +23,7 @@ int main() {
     case 'C': cout << "Okay Job" << endl; break;
     case 'D': cout << "Just Managed To Pass" << endl; break;
     case 'F': cout << "Failed" << endl; break;
+    default: cout << "Invalid Grade" << endl;
   }
 
   return 0;
