@@ -7,11 +7,15 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-  float pi = 3.14;
-  int pi_location = &pi;
 
+int main() {
+  int pi{3};
+  int *pi_location{&pi};
+  // int pi2 = *pi_location;
+
+  cout << pi << endl;
   cout << pi_location << endl;
+  cout << *pi_location << endl;
 
   return 0;
 }
