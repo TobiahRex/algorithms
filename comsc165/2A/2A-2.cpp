@@ -8,12 +8,8 @@
 #include <iostream>
 using namespace std;
 
-void SumLabel() {
-  cout << " - This is the Sum." << endl;
-}
-void DifferenceLabel() {
-  cout << " - This is the Difference." << endl;
-}
+void SumLabel();
+void DifferenceLabel();
 
 int main() {
   int num1{}, num2{};
@@ -29,4 +25,11 @@ int main() {
   DifferenceLabel();
 
   return 0;
+}
+
+void SumLabel() {
+  cout << " - This is the Sum." << endl;
+}
+void DifferenceLabel() {
+  cout << " - This is the Difference." << endl;
 }

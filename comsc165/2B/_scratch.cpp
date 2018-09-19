@@ -1,18 +1,17 @@
 #include <iostream>
 using namespace std;
 
-void staticFunc(int y) {
-  static int x;
-
-  x += y;
-
-  cout << x << endl;
+void addOne(int someVal) {
+  someVal += 1;
+  cout << "someVal: " << someVal << endl;
 }
 
 int main() {
-  for (int i = 0; i < 3; i++) {
-    staticFunc(i);
-  }
+  int x{};
+  addOne(x);
+
+  cout << "x: " <<  x << endl;
+
 
   return 0;
 }

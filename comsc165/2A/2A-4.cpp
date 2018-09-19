@@ -10,21 +10,20 @@
 #include <iomanip>
 using namespace std;
 
-float FindAverage(int qty, int sum) {
+float FindAverage(float qty, float sum) {
   float avg = sum / qty;
+
   return avg;
 }
 
 float GetGrades() {
   cout << "Enter the number of grades you wish to enter: ";
-  int gradesQty{};
+  float gradesQty{}, gradeSum{};
   cin >> gradesQty;
-
-  int gradeSum{};
 
   for (int i = 0; i < gradesQty; i++) {
     cout << "Enter grade " << i + 1 << " : ";
-    int grade{};
+    float grade{};
     cin >> grade;
     gradeSum += grade;
   }
