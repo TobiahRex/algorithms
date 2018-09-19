@@ -3,19 +3,18 @@
 #include <string>
 using namespace std;
 
-void MilesPerHour(int &, int &);
+void MilesPerHour(float, float &, float &);
 
 int main() {
-  string lineBreak(40, '_');
+  string lineBreak(40, '\n_'), shortLineBreak(20, '\n_');
   string errorMsg("That is an invalid input. Please try again.");
   bool run = true;
 
   while(run) {
-    int miles{}, hours{};
-    float milesPerHour{};
+    float milesPerHour{}, miles{}, hours{};
 
-    cout << lineBreak << "\nEnter -1 to Quit.\n" << endl;
-    cout << "\nHow many miles were travelled?: ";
+    cout << lineBreak << "Enter -1 to Quit.\n" << endl;
+    cout << "How many miles were travelled?: ";
     cin >> miles;
 
     if (miles == -1) {
@@ -25,15 +24,19 @@ int main() {
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
       cout << errorMsg << endl;
     } else if (miles > 0) {
-      cout << "\nHow many hours were travelled?: ";
+      cout << "How many hours were travelled?: ";
       cin >> hours;
 
-      if (!hours || cin.bad() || cin.fail()) {
+      if (hours == -1) {
+        run = false;
+      } else if (!hours || cin.bad() || cin.fail()) {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         cout << errorMsg << endl;
       } else {
-        MilesPerHour(miles, hours);
+        MilesPerHour(milesPerHour, miles, hours);
+        cout << "\nMiles Per Hour: " << milesPerHour
+        << shortLineBreak << endl;
       }
     }
   }
@@ -41,6 +44,7 @@ int main() {
 }
 
 
-void MilesPerHour(int cents) {
-
+void MilesPerHour(int mph, float &m, float &h) {
+  mph = (m / h);
+  return mph;
 }
