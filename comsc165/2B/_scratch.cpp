@@ -1,24 +1,18 @@
 #include <iostream>
 using namespace std;
 
+void staticFunc(int y) {
+  static int x;
+
+  x += y;
+
+  cout << x << endl;
+}
 
 int main() {
-  int x{565};
-
-  int cents{},
-  dollars = x > 100 ? 1 : 0;
-
-  while((x -= 100) > 99) {
-    dollars += 1;
-    cout << "x: " << x << endl;
+  for (int i = 0; i < 3; i++) {
+    staticFunc(i);
   }
-  cents = x;
 
-  cout << "Dollars: " << dollars << endl;
-  cout << "Cents: " << cents << endl;
-
-  // cout << x << endl;
-  // cout << remain << endl;
-
-  // cout << x << endl;
+  return 0;
 }
