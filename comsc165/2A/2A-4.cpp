@@ -10,10 +10,26 @@
 #include <iomanip>
 using namespace std;
 
-float FindAverage(float qty, float sum) {
-  float avg = sum / qty;
+float GetGrades();
 
-  return avg;
+float FindAverage(float qty, float sum);
+
+int main() {
+  float avg
+  GetGrades(avg);
+
+  string grade;
+
+  avg >= 90 ? grade = "A" :
+  avg >= 80 ? grade = "B" :
+  avg >= 70 ? grade = "C" :
+  avg >= 60 ? grade = "D" :
+  grade = "F";
+
+  cout << "Average Score: " << setprecision(2) << fixed << avg << endl;
+  cout << "Grade: " << grade << endl;
+
+  return 0;
 }
 
 float GetGrades() {
@@ -32,19 +48,8 @@ float GetGrades() {
   return average;
 }
 
-int main() {
-  float avg = GetGrades();
+float FindAverage(float qty, float sum) {
+  float avg = sum / qty;
 
-  string grade;
-
-  avg >= 90 ? grade = "A" :
-  avg >= 80 ? grade = "B" :
-  avg >= 70 ? grade = "C" :
-  avg >= 60 ? grade = "D" :
-  grade = "F";
-
-  cout << "Average Score: " << setprecision(2) << fixed << avg << endl;
-  cout << "Grade: " << grade << endl;
-
-  return 0;
+  return avg;
 }
