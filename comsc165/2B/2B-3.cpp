@@ -6,7 +6,7 @@ using namespace std;
 
 void MilesPerHour(float &, float &, float &);
 
-int main() {
+int main() {92  
   string lineBreak(40, '_');
   string errorMsg("\nThat is an invalid input. Please try again.");
   cout << "\nEnter -1 to Quit.\n" << endl;
