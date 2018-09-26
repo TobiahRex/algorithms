@@ -13,16 +13,28 @@ int main() {
   ifstream infile;
   infile.open("/Users/BICKLEY/code/cs/c-plus-plus/comsc165/3A/3A-2_input.txt");
 
-  const int SIZE{4};
-  int arr1[SIZE] = {5, 15, 25, 30},
-   arr2[SIZE] = {2, 15, 20, 30};
+  if (!infile) {
+    cout << "ERROR: Could not open file." << endl;
+    exit(1);
+  }
 
-  for (int i = 0; i < SIZE; i++) {
-    if (arr1[i] != arr2[i]) {
-      cout << "not equal" << endl;
-    } else {
-      cout << "equal" << endl;
-    }
+  const int SIZE{10};
+  int nums[SIZE], i{0};
+
+  while(infile >> nums[i]) {
+    i++;
+  }
+
+  int numsDouble[SIZE];
+  for (int j = 0; j < SIZE; j++) {
+    numsDouble[j] = (nums[j] * 2);
+  }
+
+  for (i = 0; i < SIZE; i++) {
+    cout << nums[i] << endl;
+  }
+  for (i = 0; i < SIZE; i++) {
+    cout << numsDouble[i] << endl;
   }
 
   return 0;
