@@ -44,6 +44,5 @@ float NormalizeMoney(int cents) {
   current_dollars = cents > 100 ? 1 : 0;
   while((cents -= 100) > 99) current_dollars += 1;
   current_cents = cents;
-  float total = (dollars_print + (cents_print / 100));
-  return total;
+  return (current_dollars + (current_cents / 100.00));
 }
