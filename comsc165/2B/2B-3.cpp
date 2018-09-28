@@ -4,7 +4,7 @@
 #include <iomanip>
 using namespace std;
 
-void MilesPerHour(float &, float &, float &);
+void MilesPerHour(float &, float , float);
 
 int main() {
   string lineBreak(40, '_');
@@ -43,6 +43,6 @@ int main() {
 }
 
 
-void MilesPerHour(float &mph, float &m, float &h) {
+void MilesPerHour(float &mph, float m, float h) {
   mph = (m / h);
 }
