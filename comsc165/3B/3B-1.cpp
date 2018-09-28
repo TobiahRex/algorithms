@@ -3,12 +3,13 @@
 using namespace std;
 
 void GetStudentGrade(char []);
-void CheckAnswers(char [], char [], int &, int &);
+void CheckAnswers(char [], char [], int [], int &, int &);
 
 int main() {
   char answers[20] = { 'A','D','B','B','C','B','A','B','C','D','A','C','D','B','D','C','C','A','D','B' };
   char student_answers[20];
   string student_names[100];
+  int incorrect_Qs[20];
   int correct{};
   int incorrect{};
 
@@ -21,13 +22,19 @@ int main() {
     cin >> student_names[i];
 
     GetStudentGrade(student_answers);
-    CheckAnswers(student_answers, answers, correct, incorrect);
+    CheckAnswers(student_answers, answers, incorrect_Qs, correct, incorrect);
 
     if (correct > 14) {
-      cout << "Grade: PASSED" << endl
+      cout << student_names[i] << ": PASSED" << endl
       << "# Correct: " << correct << endl
       << "# Incorrect: " << incorrect << endl
-      
+      << "Incorrect Qs: ";
+
+      for (int j = 0; j < 20; j++) {
+        if (student_answers[j] != answer[j]) {
+          cout << j + 1;
+        }
+      }
     } else {
       cout << "Grade: FAILED" << endl;
     }
@@ -56,12 +63,13 @@ void GetStudentGrade(char student_answers[]) {
   }
 }
 
-void CheckAnswers(char student_answers[], char answer_key[], int &correct, int &incorrect) {
+void CheckAnswers(char student_answers[], char answer_key[], int incorrectQs, int &correct, int &incorrect) {
   for (int i = 0; i < 20; i++) {
     if (student_answers[i] == answer_key[i]) {
       correct += 1;
     } else {
       incorrect += 1;
+      incorrectQs.push_back(i + 1);
     }
   }
 }
