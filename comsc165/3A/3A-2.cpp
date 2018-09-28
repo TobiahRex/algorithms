@@ -31,11 +31,13 @@ int main() {
   }
 
   for (i = 0; i < SIZE; i++) {
-    cout << nums[i] << endl;
+    cout << nums[i] << " ";
   }
+  cout << endl;
   for (i = 0; i < SIZE; i++) {
-    cout << numsDouble[i] << endl;
+    cout << numsDouble[i] << " ";
   }
+  cout << endl;
 
   return 0;
 }
