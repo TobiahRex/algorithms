@@ -24,21 +24,28 @@ int main() {
     GetStudentGrade(student_answers);
     CheckAnswers(student_answers, answers, incorrect_Qs, correct, incorrect);
 
+    cout << student_names[i];
     if (correct > 14) {
-      cout << student_names[i] << ": PASSED" << endl
-      << "# Correct: " << correct << endl
-      << "# Incorrect: " << incorrect << endl
-      << "Incorrect Qs: ";
-
-      for (int j = 0; j < 20; j++) {
-        if (student_answers[j] != answer[j]) {
-          cout << j + 1;
-        }
-      }
+      cout << " : PASSED" << endl;
     } else {
-      cout << "Grade: FAILED" << endl;
+      cout << " : FAILED" << endl;
+    }
+
+    cout << "# Correct: " << correct << endl
+    << "# Incorrect: " << incorrect << endl
+    << "Incorrect Qs: ";
+
+    for (int j = 0; j < 20; j++) {
+      if (student_answers[j] != answer[j]) {
+        cout << j + 1 << ", ";
+      }
     }
   }
+
+  cout << "Total Students = " << student_count << endl << "Student Names: ";
+
+  for (i = 0; i < student_names; i++) cout << student_names[i] << ", ";
+  cout << endl;
 
   return 0;
 }
