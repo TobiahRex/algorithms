@@ -3,7 +3,7 @@
 using namespace std;
 
 void GetStudentGrade(char []);
-void CheckAnswers(char [], char [], int, int);
+void CheckAnswers(char [], char [], int &, int &);
 
 int main() {
   char answers[20] = { 'A','D','B','B','C','B','A','B','C','D','A','C','D','B','D','C','C','A','D','B' };
@@ -22,6 +22,15 @@ int main() {
 
     GetStudentGrade(student_answers);
     CheckAnswers(student_answers, answers, correct, incorrect);
+
+    if (correct > 14) {
+      cout << "Grade: PASSED" << endl
+      << "# Correct: " << correct << endl
+      << "# Incorrect: " << incorrect << endl
+      
+    } else {
+      cout << "Grade: FAILED" << endl;
+    }
   }
 
   return 0;
@@ -43,6 +52,16 @@ void GetStudentGrade(char student_answers[]) {
       cin.ignore(numeric_limits<streamsize>::max(), '\n');
     } else {
       student_answers[i] = answer;
+    }
+  }
+}
+
+void CheckAnswers(char student_answers[], char answer_key[], int &correct, int &incorrect) {
+  for (int i = 0; i < 20; i++) {
+    if (student_answers[i] == answer_key[i]) {
+      correct += 1;
+    } else {
+      incorrect += 1;
     }
   }
 }
