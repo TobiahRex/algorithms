@@ -1,0 +1,10 @@
+Dog
+Cat
+Fish
+Bird
+Hamster
+Reptile
+Horse
+Guinea
+Pig
+Mouse

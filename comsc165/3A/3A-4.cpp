@@ -3,34 +3,36 @@
 #include <string>
 using namespace std;
 
-void GetGrades(int &g[], int, int &);
-float GetAvg(int a[], int);
+void GetGrades(int [], float &);
+float GetAvg(int [], float);
 
 int main() {
   const int SIZE = 1000;
-  int GradeCount{};
+  float GradeCount{};
   int GradesInput[SIZE];
 
-  GetGrades(GradesInput, SIZE);
-  float answer = GetAvg(GradesInput);
-  cout << "Avg Grade: " << answer;
+  GetGrades(GradesInput, GradeCount);
+  float answer = GetAvg(GradesInput, GradeCount);
+  cout << "\nAvg Grade: " << setprecision(2) << fixed << answer << endl;
 
   return 0;
 }
 
-void GetGrades(int &grades[], int SIZE, int &GradeCount) {
+void GetGrades(int grades[], float &GradeCount) {
   string lineBreak(10, '_');
   cout << "Please enter student grades\n" << endl
-  << "NOTE: Enter '0' to calculate Average Grade" << endl << linebreak << endl;
-  bool not_sentinal{true};
+  << "NOTE: Enter '-1' to calculate Average Grade" << endl << lineBreak << endl;
 
-  for (int i{}; not_sentinal == true ;i++) {
+  bool prompt_user{true};
+
+  for (int i{}; prompt_user == true ;i++) {
     cout << "Student #" << i + 1 << " : ";
 
     int grade{};
     cin >> grade;
-    if (grade == 0) {
-      not_sentinal = false;
+
+    if (grade == -1) {
+      prompt_user = false;
     } else {
       GradeCount += 1;
       grades[i] = grade;
@@ -38,14 +40,14 @@ void GetGrades(int &grades[], int SIZE, int &GradeCount) {
   }
 }
 
-float GetAvg(int a[], int SIZE) {
+float GetAvg(int grades[], float GradeCount) {
   int sum{};
-  float avg{}, qty = (float)(SIZE);
+  float avg{};
 
-  for (int i = 0; i < SIZE; i++) {
-    sum += a[i];
+  for (int i = 0; i < GradeCount; i++) {
+    sum += grades[i];
   }
 
-  avg = sum / qty;
+  avg = sum / GradeCount;
   return avg;
 }

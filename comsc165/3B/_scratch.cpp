@@ -1,7 +1,12 @@
 #include <iostream>
 using namespace std;
 
+
 int main() {
-  cout << (int)'D' << endl;
+  int i{0};
+  cin >> i;
+
+  cout << (int)i << endl;
+
   return 0;
 }

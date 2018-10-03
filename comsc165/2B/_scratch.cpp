@@ -1,17 +1,25 @@
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
-void addOne(int someVal) {
-  someVal += 1;
-  cout << "someVal: " << someVal << endl;
+
+int itValue() {
+  vector<string> names = {"toby", "bob"};
+  vector<string>::iterator it;
+
+  for (it = names.begin(); it != names.end(); it++) {
+    cout << it << endl;
+  }
+
+  return 1;
 }
 
 int main() {
-  int x{};
-  addOne(x);
+  vector<int> n = {1};
 
-  cout << "x: " <<  x << endl;
-
+  // cout << "x: " <<  n[1] << endl;
+  itValue();
 
   return 0;
 }

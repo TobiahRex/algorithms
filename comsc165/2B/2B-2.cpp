@@ -37,7 +37,7 @@ float NormalizeMoney(int cents) {
 
   while((tempSum -= 100) > 99) total_dollars += 1;
   total_cents = tempSum;
-  cout << "Total Sum($): " << (total_dollars + (total_cents / 100.00)) << endl;
+  cout << "Total Sum($): " << setprecision(2) << fixed << (total_dollars + (total_cents / 100.00)) << endl;
 
   // Parse input Cents to Dollars & Cents
   int current_cents{},
