@@ -4,7 +4,8 @@
 #include <string>
 using namespace std;
 
-void PopulateVector(string);
+vector<string> PopulateVector(string);
+bool isPopular(vector<string>, string);
 
 int main() {
   return 0;
@@ -17,7 +18,8 @@ int main() {
   cout << "What type of Pet do you have? ";
   cin >> userAnswer;
 
-  bool
+  bool finalAnswer = isPopular(popularPets, userAnswer);
+  cout << finalAnswer == true ? cout << "Your Pet is Popular! 😺" : cout << "Your Pet is NOT popular ☹️" << endl;
 }
 
 vector<string> PopulateVector(string fileName) {
@@ -34,4 +36,14 @@ vector<string> PopulateVector(string fileName) {
     }
   }
   return popularPets;
+}
+
+bool isPopular(vector<string> popularPets, string userPet) {
+  bool answer{false};
+  for (auto popular : popularPets) {
+    if (popular == userPet) {
+      answer = true;
+    }
+  }
+  return answer;
 }
