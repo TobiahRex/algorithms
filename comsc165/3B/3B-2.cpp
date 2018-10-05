@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void GetFoodCount(int data[3][7], string customers[], string days[], int ROWS, int COLS) {
+void GetFoodCount(int data[][7], string customers[], string days[], int ROWS, int COLS) {
   for (int i{0}; i < ROWS; i++) {
     cout << "-- Data For " << customers[i] << " --" << endl;
     for (int j{0}; j < COLS; j++) {
@@ -24,22 +24,22 @@ void GetFoodCount(int data[3][7], string customers[], string days[], int ROWS, i
   }
 }
 
-void GetAvgFood(int data[3][7], string customers[], int ROWS, int COLS) {
+void GetAvgFood(int data[][7], string daysOfWeek[], int ROWS, int COLS) {
   string lineBreak(10, '_');
   cout << lineBreak << endl;
 
-  for (int i{0}; i < ROWS; i++) {
-    float customerTotal{0}, customerAvg{0};
+  for (int i{0}; i < COLS; i++) {
+    float dailyTotal{0}, dailyAvg{0};
 
-    for (int j{0}; j < COLS; j++) {
-      customerTotal += data[i][j];
+    for (int j{0}; j < ROWS; j++) {
+      dailyTotal += data[j][i];
     }
-    customerAvg = customerTotal / 7.00;
-    cout << customers[i] << "Average: " << setprecision(2) << fixed << customerAvg << endl;
+    dailyAvg = dailyTotal / 3.00;
+    cout << daysOfWeek[i] << " Average: " << setprecision(2) << fixed << dailyAvg << endl;
   }
 }
 
-void GetLeastFood(int data[3][7], string customers[], string days[], int ROWS, int COLS) {
+void GetLeastFood(int data[][7], string customers[], string days[], int ROWS, int COLS) {
   string lineBreak(10, '_');
   string leastDay("");
   string leastCustomer("");
@@ -61,7 +61,7 @@ void GetLeastFood(int data[3][7], string customers[], string days[], int ROWS, i
   << "Diner Category: " << leastCustomer << endl;
 }
 
-void GetMostFood(int data[3][7], string customers[], string days[], int ROWS, int COLS) {
+void GetMostFood(int data[][7], string customers[], string days[], int ROWS, int COLS) {
   string lineBreak(10, '_');
   string mostDay("");
   string mostCustomer("");
@@ -90,7 +90,7 @@ int main() {
   int dinerData[ROWS][COLUMNS];
 
   GetFoodCount(dinerData, customerType, daysOfWeek, ROWS, COLUMNS);
-  GetAvgFood(dinerData, customerType, ROWS, COLUMNS);
+  GetAvgFood(dinerData, daysOfWeek, ROWS, COLUMNS);
   GetLeastFood(dinerData, customerType, daysOfWeek, ROWS, COLUMNS);
   GetMostFood(dinerData, customerType, daysOfWeek, ROWS, COLUMNS);
 }

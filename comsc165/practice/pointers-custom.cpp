@@ -10,8 +10,9 @@ using namespace std;
 
 int main() {
   int pi{3};
-  int *pi_location{&pi};
-  // int pi2 = *pi_location;
+  int *pi_location{nullptr};
+  cout << pi_location << endl;
+  pi_location = &pi;
 
   cout << pi << endl;
   cout << pi_location << endl;

@@ -16,6 +16,8 @@ int main() {
   if (!infile) {
     cout << "ERROR: Could not open file." << endl;
     exit(1);
+  } else {
+    cout << "File open" << endl;
   }
 
   const int SIZE{10};

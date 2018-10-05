@@ -5,6 +5,5 @@ Bird
 Hamster
 Reptile
 Horse
-Guinea
-Pig
+Guinea Pig
 Mouse

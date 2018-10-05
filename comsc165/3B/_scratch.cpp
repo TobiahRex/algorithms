@@ -1,12 +1,13 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 
 int main() {
-  int i{0};
-  cin >> i;
+  string a("yo");
+  string b("yo");
 
-  cout << (int)i << endl;
+  cout << a.compare(b) << endl;
 
   return 0;
 }

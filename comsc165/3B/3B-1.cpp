@@ -29,7 +29,7 @@ int main() {
     CheckAnswers(student_answers, answers, incorrect_Qs, correct, incorrect);
 
     cout << endl << student_names[i];
-    if (correct > 14) {
+    if (correct >= 14) {
       cout << " : PASSED" << endl;
     } else {
       cout << " : FAILED" << endl;

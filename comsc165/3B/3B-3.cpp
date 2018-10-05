@@ -8,22 +8,29 @@ vector<string> PopulateVector(string);
 bool isPopular(vector<string>, string);
 
 int main() {
-  return 0;
-
-  string fileName("Users/BICKLEY/code/cs/comsc165/3B/PopularPets.txt");
+  string fileName("/Users/BICKLEY/code/cs/c-plus-plus/comsc165/3B/PopularPets.txt");
   string userAnswer("");
-  bool finalAnswer{false};
   vector<string> popularPets = PopulateVector(fileName);
 
   cout << "What type of Pet do you have? ";
-  cin >> userAnswer;
+  getline(cin, userAnswer);
 
-  bool finalAnswer = isPopular(popularPets, userAnswer);
-  cout << finalAnswer == true ? cout << "Your Pet is Popular! 😺" : cout << "Your Pet is NOT popular ☹️" << endl;
+  if (isPopular(popularPets, userAnswer)) {
+    cout << "Your Pet is Popular!" << endl;
+  } else {
+    cout << "Your Pet is NOT popular" << endl;
+  }
+
+  return 0;
 }
 
-vector<string> PopulateVector(string fileName) {
-  ifstream infile(fileName);
+vector<string> PopulateVector(string file) {
+  ifstream infile(file);
+  if (!infile) {
+    cout << "ERROR: Could not open file." << endl;
+    exit(1);
+  }
+
   vector<string> popularPets;
   string pet;
   bool readFile{true};
@@ -41,7 +48,7 @@ vector<string> PopulateVector(string fileName) {
 bool isPopular(vector<string> popularPets, string userPet) {
   bool answer{false};
   for (auto popular : popularPets) {
-    if (popular == userPet) {
+    if (popular.compare(userPet) == 0) {
       answer = true;
     }
   }
