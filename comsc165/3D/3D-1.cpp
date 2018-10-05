@@ -45,25 +45,24 @@ int LinearSearch(vector<int> nums, int target) {
   if (lastVal == target) found = true;
 
   found == true ?
-    cout << "\nLinear Search found Value at position " << i + 1 << endl :
+    cout << "\nLinear Search found Value at position " << i << endl :
     cout << "\nLinear Search did NOT find value" << endl;
 
   return comparisons;
 }
 
 int BinarySearch(vector<int> nums, int target) {
+  cout << "\n\t -- Binary Search Results -- " << endl;
   int comparisons{},
-    first{},
+    first{0},
     last = nums.size() - 1,
     position{-1},
     middle{};
 
   bool found{false};
-
   while (!found && first <= last) {
     comparisons += 1;
-    middle = nums[first - last] / 2;
-    cout << middle << endl;
+    middle = (first + last) / 2;
 
     if (target == nums[middle]) {
       position = middle;
@@ -76,7 +75,7 @@ int BinarySearch(vector<int> nums, int target) {
   }
 
   found == true ?
-    cout << "\nBinary Search found Value at position " << position << endl :
+    cout << "\nBinary Search found Value at position " << position + 1 << endl :
     cout << "\nBinary Search did NOT find value" << endl;
 
   return comparisons;
