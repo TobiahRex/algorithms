@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
-int SelectionSort(vector<int>, int);
-int BubbleSort(vector<int>, int);
+int SelectionSort(vector<int>);
+int BubbleSort(vector<int>);
 
 int main() {
   vector<int> nums = {
@@ -26,61 +27,55 @@ int main() {
     7881200,
     4581002
   };
+  vector<int> selection = nums;
+  vector<int> bubble = nums;
 
-  int selection_exchanges = SelectionSort(nums, target);
-  cout << "\n\t -- Selection Sort Results -- " << endl
-  << "Exchanges: " << selection_exchanges << endl;
+  cout << "\n\t -- Selection Sort Results -- " << endl;
+  int selection_exchanges = SelectionSort(selection);
+  cout << "Exchanges: " << selection_exchanges << endl;
 
-  int binary_comparisons = BubbleSort(nums, target);
-  cout << "\n\t -- Bubble Sort Results -- " << endl
-  << "Exchanges: " << binary_comparisons << endl;
+  cout << "\n\t -- Bubble Sort Results -- " << endl;
+  int bubble_exchanges = BubbleSort(bubble);
+  cout << "Exchanges: " << bubble_exchanges << endl;
 
   return 0;
 }
 
-int SelectionSort(vector<int> nums, int target) {
-  int comparisons{}, lastVal{}, i{0}, size = nums.size();
+int SelectionSort(vector<int> arr) {
+  vector<int> temp = arr;
 
-  for (;lastVal != target && i < size; i++) {
-    comparisons += 1;
-    lastVal = nums[i];
-  }
+  int exchanges{}, size = arr.size();
 
-  bool found{false};
-  if (lastVal == target) found = true;
-
-  found == true ?
-    cout << "\nLinear Search found Value at position " << i << endl :
-    cout << "\nLinear Search did NOT find value" << endl;
-
-  return comparisons;
-}
-
-int BubbleSort(vector<int> nums, int target) {
-  int comparisons{},
-    first{0},
-    last = nums.size() - 1,
-    position{-1},
-    middle{};
-
-  bool found{false};
-  while (!found && first <= last) {
-    comparisons += 1;
-    middle = (first + last) / 2;
-
-    if (target == nums[middle]) {
-      position = middle;
-      found = true;
-    } else if (target < nums[middle]) {
-      last = middle - 1;
-    } else {
-      first = middle + 1;
+  for (int i{0}; i < size; i++) {
+    for (int j = i + 1; j < size; j++) {
+      if (arr[i] > arr[j]) {
+        exchanges += 1;
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
     }
   }
 
-  found == true ?
-    cout << "\nBinary Search found Value at position " << position + 1 << endl :
-    cout << "\nBinary Search did NOT find value" << endl;
+  return exchanges;
+}
 
-  return comparisons;
+int BubbleSort(vector<int> arr) {
+  int exchanges{},
+    size = arr.size();
+
+  for(int j{0}; j < size; j++) {
+    int divide = 0;
+    for (int i{1}; i < size; i++) {
+      if (arr[divide] > arr[i]) {
+        exchanges += 1;
+        int temp = arr[i];
+        arr[i] = arr[divide];
+        arr[divide] = temp;
+        divide += 1;
+      }
+    }
+  }
+
+  return exchanges;
 }
