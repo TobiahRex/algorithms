@@ -2,37 +2,43 @@
 #include <vector>
 using namespace std;
 
-int LinearSearch(vector<int>, int);
-int BinarySearch(vector<int>, int);
+int SelectionSort(vector<int>, int);
+int BubbleSort(vector<int>, int);
 
 int main() {
-  vector<int> nums = {101, 142, 147, 189, 199, 207, 222, 234, 289, 296, 310, 319, 388, 394, 417, 429, 447, 521, 536, 600};
-  int target{};
+  vector<int> nums = {
+    5658845,
+    4520125,
+    7895122,
+    8777541,
+    8451277,
+    1302850,
+    8080152,
+    4562555,
+    5552012,
+    5050552,
+    7825877,
+    1250255,
+    1005231,
+    6545231,
+    3852085,
+    7576651,
+    7881200,
+    4581002
+  };
 
-  bool invalid{true};
-  while(invalid) {
-    cout << "Enter target value to search for: ";
-    cin >> target;
-    if (target < 0 || cin.fail() || cin.bad()) {
-      cout << "\n\t\t ERROR \nTarget value must be greater than 0\n" << endl;
-      cin.clear();
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    } else {
-      invalid = false;
-    }
-  }
+  int selection_exchanges = SelectionSort(nums, target);
+  cout << "\n\t -- Selection Sort Results -- " << endl
+  << "Exchanges: " << selection_exchanges << endl;
 
-  int linear_comparisons = LinearSearch(nums, target);
-  cout << "Comparisons: " << linear_comparisons << endl;
-
-  int binary_comparisons = BinarySearch(nums, target);
-  cout << "Comparisons: " << binary_comparisons << endl;
+  int binary_comparisons = BubbleSort(nums, target);
+  cout << "\n\t -- Bubble Sort Results -- " << endl
+  << "Exchanges: " << binary_comparisons << endl;
 
   return 0;
 }
 
-int LinearSearch(vector<int> nums, int target) {
-  cout << "\n\t -- Linear Search Results -- " << endl;
+int SelectionSort(vector<int> nums, int target) {
   int comparisons{}, lastVal{}, i{0}, size = nums.size();
 
   for (;lastVal != target && i < size; i++) {
@@ -50,8 +56,7 @@ int LinearSearch(vector<int> nums, int target) {
   return comparisons;
 }
 
-int BinarySearch(vector<int> nums, int target) {
-  cout << "\n\t -- Binary Search Results -- " << endl;
+int BubbleSort(vector<int> nums, int target) {
   int comparisons{},
     first{0},
     last = nums.size() - 1,
