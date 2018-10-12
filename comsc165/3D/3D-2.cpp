@@ -66,7 +66,7 @@ int BubbleSort(vector<int> arr) {
 
   for(int j{size}; j > 0; j--) {
     int divide = size;
-    for (int i{0}; i < divide - 1; i++) {
+    for (int i{0}; i < divide - 2; i++) {
       if (arr[i] > arr[i + 1]) {
         exchanges += 1;
         int temp = arr[i];
