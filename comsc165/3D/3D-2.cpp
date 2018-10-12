@@ -46,17 +46,20 @@ int SelectionSort(vector<int> arr) {
 
   int exchanges{}, size = arr.size();
 
-  for (int i{0}; i < size; i++) {
+  for (int i{0}; i < size - 1; i++) {
+    int smallest{i + 1};
     for (int j = i + 1; j < size; j++) {
-      if (arr[j] < arr[i]) {
-        int temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-
-        exchanges += 1;
-      }
+      if (arr[j] < arr[smallest]) {
+        smallest = j;
+      };
     }
+    int temp = arr[smallest];
+    arr[smallest] = arr[i];
+    arr[i] = temp;
+    exchanges += 1;
   }
+  for (auto x : arr) cout << x << " " << endl;
+
 
   return exchanges;
 }
@@ -76,7 +79,6 @@ int BubbleSort(vector<int> arr) {
     }
     divide -= 1;
   }
-  for (auto x : arr) cout << x << " " << endl;
 
   return exchanges;
 }
