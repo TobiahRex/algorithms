@@ -64,18 +64,19 @@ int BubbleSort(vector<int> arr) {
   int exchanges{},
     size = arr.size();
 
-  for(int j{0}; j < size; j++) {
-    int divide = 0;
-    for (int i{1}; i < size; i++) {
-      if (arr[divide] > arr[i]) {
+  for(int j{size}; j > 0; j--) {
+    int divide = size;
+    for (int i{0}; i < divide - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
         exchanges += 1;
         int temp = arr[i];
-        arr[i] = arr[divide];
-        arr[divide] = temp;
-        divide += 1;
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        divide -= 1;
       }
     }
   }
+  for (auto x : arr) cout << x << " " << endl;
 
   return exchanges;
 }
