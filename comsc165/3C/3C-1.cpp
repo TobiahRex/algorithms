@@ -7,7 +7,7 @@ int main() {
   vector<int> ages = {6, 18, 30, 45, 56, 60};
 
   for (int a : ages) {
-    cout << " " << a << " ";
+    cout << " " << a;
   }
   cout << endl;
 
@@ -15,9 +15,9 @@ int main() {
 
   ages.emplace(it, 25);
 
-  int size = ages.size();
-  for (int i = 0; i < size; i++) {
-    cout << " " << ages[i] << " ";
+  vector<int>::iterator it2;
+  for (it2 = ages.begin(); it2 != ages.end(); it2++) {
+    cout << " " << *it2;
   }
   cout << endl;
 
