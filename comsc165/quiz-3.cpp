@@ -28,22 +28,27 @@ int main() {
   sales = new double[months];
 
   bool getSales{true};
-  double sale{};
-  int sale_count{}, i_count{};
+  int sale_count{};
 
   while(getSales) {
-    cout << "Enter Sale: ";
-    cin >> sale;
+    if (sale_count < months) {
+      double sale{};
+      cout << "Enter Sale: ";
+      cin >> sale;
 
-    if (sale < 1000 || cin.bad() || cin.fail()) {
-      cout << "'" << sale << "' Sale value must be greater than 1000." << endl;
-      cin.clear();
-      cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    } else if (sale_count == (months - 1)) {
-      getSales = false;
+      if (sale < 1000 || cin.bad() || cin.fail()) {
+        cout << "'" << sale << "' Sale value must be greater than 1000." << endl;
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      } else {
+        cout << sale_count << endl;
+
+        *(sales + sale_count) = sale;
+
+        sale_count += 1;
+      }
     } else {
-      *(sales + i_count) = sale;
-      sale_count += 1;
+      getSales = false;
     }
   }
 
@@ -58,7 +63,8 @@ int main() {
 
 void findSumAndAverage(double sales[], double &total, int length, double &average) {
   for (int i = 0; i < length; i++ ) {
-    total += *sales;
+    cout << sales[i] << endl;
+    total += sales[i];
   }
 
   findAverage(total, length, average);
