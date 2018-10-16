@@ -47,7 +47,7 @@ int SelectionSort(vector<int> arr) {
   int exchanges{}, size = arr.size();
 
   for (int i{0}; i < size - 1; i++) {
-    int smallest{i + 1};
+    int smallest{i};
     for (int j = i + 1; j < size; j++) {
       if (arr[j] < arr[smallest]) {
         smallest = j;

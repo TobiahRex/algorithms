@@ -41,8 +41,6 @@ int main() {
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
       } else {
-        cout << sale_count << endl;
-
         *(sales + sale_count) = sale;
 
         sale_count += 1;
@@ -63,8 +61,8 @@ int main() {
 
 void findSumAndAverage(double sales[], double &total, int length, double &average) {
   for (int i = 0; i < length; i++ ) {
-    cout << sales[i] << endl;
-    total += sales[i];
+    // cout << *(sales + i) << endl;
+    total += *(sales + i);
   }
 
   findAverage(total, length, average);
