@@ -1,15 +1,10 @@
 #include <iostream>
-#include <cctype>
+#include <vector>
 using namespace std;
 
 int main() {
-  cout << "Enter a single character: ";
-  int c;
-  cin >> c;
-  if (isspace(c))
-    cout << "Whitespace character.";
-  else
-    cout << "nothing";
+  vector <int> nums;
+  for (auto x : nums) cout << x << endl;
 
   return 0;
 }

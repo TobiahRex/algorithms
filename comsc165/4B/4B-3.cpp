@@ -18,7 +18,7 @@ int main() {
   const int NEW_SIZE = strlen(string1) + strlen(string2) + 1;
   char newString[NEW_SIZE];
 
-  cout << "Sting 1: " << string1 << endl << "String 2: " << string2 << endl;
+  cout << "String 1: " << string1 << endl << "String 2: " << string2 << endl;
   ModifyString(newString, string1, string2, NEW_SIZE);
   FindSubStr(newString);
 

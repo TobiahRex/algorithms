@@ -2,34 +2,30 @@
 #include <vector>
 using namespace std;
 
-void GetInput(char *);
-void CountVowels(string &);
+void CountVowels(char *);
 
 int main() {
   const int SIZE{50};
   char inputStr[SIZE];
-  GetInput(inputStr);
+  cout << "Enter string less than 50 characters: ";
+  cin.getline(inputStr, SIZE);
   CountVowels(inputStr);
 
   return 0;
 }
-void GetInput(char *input) {
-  cin.clear();
-  cin.getline(input, 50);
-}
 
 void CountVowels(char *input) {
-  int i{0}, total{0};
+  int total{0};
   vector<int> vowel_count = {0, 0, 0, 0, 0}; // 0: a, 1: e, 2: i, 3: o, 4: u,
-  while(input[i] != '\0') {
-    switch(input[i]) {
+  while(*input != '\0') {
+    switch(tolower(*input)) {
       case 'a': {
         vowel_count[0] += 1;
-        total += 1
+        total += 1;
       }; break;
       case 'e': {
         vowel_count[1] += 1;
-        total += 1
+        total += 1;
       }; break;
       case 'i': {
         vowel_count[2] += 1;
@@ -45,6 +41,7 @@ void CountVowels(char *input) {
       }; break;
       default: break;
     }
+    input++;
   }
 
   cout << "Input String: " << input
