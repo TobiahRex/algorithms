@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <iomanip>
 using namespace std;
 
 struct Address {
@@ -35,7 +37,7 @@ void GetAddress(Address &);
 void GetLoginInfo(LoginInfo &);
 void GetPayrollInfo(PayrollInfo &);
 
-void PrintEmployeeInfo(Employee &);
+void PrintEmployeeInfo(Employee &, int);
 
 int main() {
   const int SIZE = 3;
@@ -46,7 +48,7 @@ int main() {
   }
 
   for (int i = 0; i < SIZE; i++) {
-    PrintEmployeeInfo(employees[i]);
+    PrintEmployeeInfo(employees[i], i);
   }
 
   return 0;
@@ -59,7 +61,17 @@ void GetEmployeeInfo(Employee &employee) {
 }
 
 void GetAddress(Address &address) {
-  cout << "address: " << address.city << endl;
+  cout << "What is the Employees City?" << endl << "City: ";
+  cin >> address.city;
+
+  cout << "What is the Employees State?" << endl << "State: ";
+  cin >> address.state;
+
+  cout << "What is the Employees Street?" << endl << "Street: ";
+  cin >> address.street;
+
+  cout << "What is the Employees Zip Code?" << endl << "Zip Code: ";
+  cin >> address.zipCode;
 }
 
 void GetLoginInfo(LoginInfo &credentials) {
@@ -67,29 +79,46 @@ void GetLoginInfo(LoginInfo &credentials) {
 }
 
 void GetPayrollInfo(PayrollInfo &data) {
-  cout << "Payroll Data: " << data.hourlyRate << endl;
+  bool promptUser{true};
+  while(promptUser) {
+    cout << "How many hours per week does this employee work?" << endl << "Hours per Week: ";
+    cin >> data.hoursPerWeek;
+
+    if (data.hoursPerWeek > 40 || cin.bad() || cin.fail()) {
+      cout << "'" << size << "' value must be less than 40" << endl;
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    } else {
+      promptUser = false;
+    }
+  }
+
+  cout << "What is this employees hourly rate?" << endl << "Hourly Rate: ";
+  cin >> data.hourlyRate;
+
+  data.monthlySalary = (hourlyRate * hoursPerWeek * 4);
 }
 
-void PrintEmployeeInfo(Employee &e) {
-  cout << "\n\t\t\t --- Employee ---" << endl
-  << "ID: " << e.id << endl
-  << "First Name: " << e.firstName << endl
-  << "Last Name: " << e.lastName << endl
+void PrintEmployeeInfo(Employee &e, int index) {
+  cout << "\n\t\t\t --- Employee " << index + 1 << " ---" << endl
+  << "ID: \t\t" << e.id << endl
+  << "First Name: \t\t" << e.firstName << endl
+  << "Last Name: \t\t" << e.lastName << endl;
 
   cout << "Address ---" << endl
   << "City: \t\t" << e.address.city << endl
   << "State: \t\t" << e.address.state << endl
   << "Street: \t\t" << e.address.street << endl
-  << "Zip Code: \t\t" << e.address.zipCode << endl
+  << "Zip Code: \t\t" << e.address.zipCode << endl;
 
   cout << "Salary ---" << endl
-  << "Hourly Rate: \t\t" << e.salary.hourlyRate
-  << "Hours Per Week: \t\t" << e.salary.hoursPerWeek
-  << "Monthly Salary: \t\t" << e.salary.monthlySalary
+  << "Hourly Rate: \t\t" << e.salary.hourlyRate << endl
+  << "Hours Per Week: \t\t" << e.salary.hoursPerWeek << endl
+  << setprecision(2) << fixed <<  "Monthly Salary: \t\t" << e.salary.monthlySalary << endl;
 
   cout << "Credentials ---" << endl
-  << "User Name: \t\t" << e.security.hourlyRate
-  << "Password: \t\t" << e.security.hoursPerWeek
-  << "Password Hint: \t\t" << e.security.monthlySalary
+  << "User Name: \t\t" << e.security.userName << endl
+  << "Password: \t\t" << e.security.password << endl
+  << "Password Hint: \t\t" << e.security.passwordHint << endl;
 
 }
