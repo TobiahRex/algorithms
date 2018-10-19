@@ -75,7 +75,37 @@ void GetAddress(Address &address) {
 }
 
 void GetLoginInfo(LoginInfo &credentials) {
-  cout << "password: " << credentials.password << endl;
+  cout << "What is the users login name?" << endl << "Username: ";
+  cin >> credentials.userName;
+
+  bool promptUser{true};
+  string password("");
+
+  while(promptUser) {
+    cout << "What is the users Password? (Must be lowercase & numbers ONLY)." << endl << "Password: ";
+    cin >> password;
+
+    bool badPassword{false};
+    for (int i = 0; i < password.size(); i++) {
+      if (!(isdigit(password[i])) || !(islower(password[i])) || cin.bad() || cin.fail()) {
+        badPassword = true;
+      }
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+     if (badPassword) {
+       cout << "'" << password << "' has invalid input. Please try again" << endl;
+     } else {
+       promptUser = false;
+     }
+  }
+
+  credentials.password = password;
+
+  cout << "What is the users Password Hint?." << endl << "Password Hint: ";
+  cin >> credentials.passwordHint;
+
 }
 
 void GetPayrollInfo(PayrollInfo &data) {
@@ -112,7 +142,7 @@ void PrintEmployeeInfo(Employee &e, int index) {
   << "Zip Code: \t\t" << e.address.zipCode << endl;
 
   cout << "Salary ---" << endl
-  << "Hourly Rate: \t\t" << e.salary.hourlyRate << endl
+  << setprecision(2) << fixed << "Hourly Rate: \t\t" << e.salary.hourlyRate << endl
   << "Hours Per Week: \t\t" << e.salary.hoursPerWeek << endl
   << setprecision(2) << fixed <<  "Monthly Salary: \t\t" << e.salary.monthlySalary << endl;
 
