@@ -1,0 +1,27 @@
+First Name: Jackie
+Last Name: Doe
+Address: 555 Golf Club Road
+City: Pleasant Hill
+State: CA
+Zip: 94523
+
+First Name: John
+Last Name: Anon
+Address:  10007 Side Street
+City: San Ramon
+State: CA
+Zip: 94582
+
+First Name: Sandy
+Last Name: Beach
+Address: 2345 Ocean Avenue
+City: Santa Cruz
+State: CA
+Zip: 95060
+
+First Name: June
+Last Name: Empire
+Address: 245 33rd Street
+City: New York
+State: NY
+Zip: 10017

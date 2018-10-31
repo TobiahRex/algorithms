@@ -1,20 +1,19 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
 using namespace std;
 
 int main() {
-  string password("Aa74!55Ymary;");
-  for (auto x : password) {
-    if (ispunct(x)) {
-      cout << "bad" << endl;
-    } else
-    if (isupper(x)) {
-      cout << "bad" << endl;
-    } else
-    if (isspace(x)) {
-      cout << "bad" << endl;
-    }
-  }
+  fstream dataFile;
+  dataFile.open("testing.dat", ios::out);
 
+  long num = 154253452345;
+  dataFile.write((char *) &num, sizeof(num));
+  dataFile.close();
+
+  dataFile.open("testing.txt", ios::in);
+  long num2{};
+  dataFile.read((char *) &num2, sizeof(num2));
+  cout << num2 << endl;
   return 0;
 }
