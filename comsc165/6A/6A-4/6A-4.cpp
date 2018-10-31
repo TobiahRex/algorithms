@@ -12,9 +12,30 @@ int main() {
   ifstream punchlineFile("punchline.txt");
 
   readJoke(jokeFile);
+  readPunchline(punchlineFile);
 
   cin.clear();
   readFile(fileName);
 
   return 0;
+}
+
+void readJoke(ifstream &file) {
+  string line("");
+
+  bool readFile{true};
+  while(readFile) {
+    if(getline(file, line)) {
+      cout << line << endl;
+    } else {
+      readFile = false;
+    }
+  }
+}
+
+void readPunchline(ifstream &file) {
+  file.seekg(-1L, ios::end);
+  char c;
+  file.get(c);
+  cout << "\n" << c << endl;
 }
