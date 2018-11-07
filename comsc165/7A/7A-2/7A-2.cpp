@@ -5,7 +5,11 @@ using namespace std;
 class Square {
   private:
     int side;
-}
+  public:
+    void setSide(float);
+    float findArea();
+    float findPerimeter();
+};
 int main(){
   Square box;
   // box is defined as an object of the Square class
@@ -19,7 +23,7 @@ int main(){
   box.setSide(size);
   // FILL IN THE CODE THAT WILL RETURN THE AREA FROM A CALL TO A FUNCTION
   // AND PRINT OUT THE AREA TO THE SCREEN.
-  cout << "\nArea of the square: " << box.getArea() << endl;
+  cout << "\nArea of the square: " << box.findArea() << endl;
   // FILL IN THE CODE THAT WILL RETURN THE PERIMETER FROM A CALL TO A
   // FUNCTION AND PRINT OUT THAT VALUE TO THE SCREEN.
   cout << "Perimeter of the square: " << box.findPerimeter() << endl;
