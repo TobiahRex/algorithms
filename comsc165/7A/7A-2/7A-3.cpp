@@ -2,17 +2,33 @@
 
 class SavingsAccount {
   private:
-    int dollars;
-    int cents;
+    int dollars{0};
+    int cents{0};
   public:
-    void _parseDeposit(int &dollars, int &cents) {
-      while(cents >= 100) {
-        dollars += 1;
-        cents -= 100;
+    void _parseDeposit(int c, bool deposit) {
+      if (deposit) {
+        while(c >= 100) {
+          dollars += 1;
+          c -= 100;
+        }
+        cents += c;
+      } else {
+        while(c >= 100) {
+          dollars -= 1;
+          c -= 100;
+        }
+        cents -= c;
       }
     }
-    void openAccount(float initDeposit);
-    void makeDeposit(float deposit);
+    void openAccount(float initDeposit) {
+      this._parseDeposit(initDeposit, true);
+    }
+    void makeDeposit(float deposit) {
+      this._parseDeposit(deposit, true);
+    }
+    void makeWithdrawal(float amount) {
+      this._parseDeposit(amount, false);
+    }
     void getBalance() const;
 };
 
