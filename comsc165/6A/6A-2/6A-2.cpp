@@ -17,7 +17,6 @@ int main() {
       if (dataFile.eof()) dataFile.clear();
       dataFile.seekg(location, ios::cur);
 
-
       location = dataFile.tellg();
       cout << "Current read location is " << location << endl;
 
