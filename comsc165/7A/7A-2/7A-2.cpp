@@ -18,11 +18,11 @@ int main(){
   // FILL IN THE CODE THAT CALLS SetSide.
   box.setSide(size);
   // FILL IN THE CODE THAT WILL RETURN THE AREA FROM A CALL TO A FUNCTION
-  cout << "Area of the square"
   // AND PRINT OUT THE AREA TO THE SCREEN.
-
+  cout << "\nArea of the square: " << box.getArea() << endl;
   // FILL IN THE CODE THAT WILL RETURN THE PERIMETER FROM A CALL TO A
   // FUNCTION AND PRINT OUT THAT VALUE TO THE SCREEN.
+  cout << "Perimeter of the square: " << box.findPerimeter() << endl;
   return 0;
 }
 // Implementation section Member function implementation
