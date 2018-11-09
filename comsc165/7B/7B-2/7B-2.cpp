@@ -1,4 +1,4 @@
-/*
+/* 7B-2
 •Design a StudentGrades class that has member variables to hold four grades.
 The class should have a constructor, accessor, and mutator functions for
 the grades fields and a member function that returns the average of the grades.
