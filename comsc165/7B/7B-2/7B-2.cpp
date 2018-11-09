@@ -13,7 +13,6 @@ Run 1: 88, 90, 99, 100
 Run 2: 45, 55, 65, 75
 */
 #include <iostream>
-#include <cstdlib>
 #include "StudentGrades.h"
 using namespace std;
 
