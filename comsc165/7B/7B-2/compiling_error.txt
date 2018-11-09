@@ -1,0 +1,15 @@
+clang: warning: treating 'c-header' input as 'c++-header' when in C++ mode, this behavior is deprecated [-Wdeprecated]
+/Users/BICKLEY/code/cs/c-plus-plus/comsc165/7B/7B-2/StudentGrades.h:33:22: error: expected ';' at end of declaration
+        int tempGrade{0};
+                     ^
+                     ;
+/Users/BICKLEY/code/cs/c-plus-plus/comsc165/7B/7B-2/StudentGrades.h:54:23: error: invalid operands to binary expression ('int *' and 'int *')
+      return ((grade1 + grade2 + grade3 + grade4) / 4.00);
+               ~~~~~~ ^ ~~~~~~
+/Users/BICKLEY/code/cs/c-plus-plus/comsc165/7B/7B-2/StudentGrades.h:57:7: error: use of undeclared identifier 'setwidth'
+      setwidth(10);
+      ^
+/Users/BICKLEY/code/cs/c-plus-plus/comsc165/7B/7B-2/StudentGrades.h:64:7: error: use of undeclared identifier 'setwidth'
+      setwidth(15);
+      ^
+4 errors generated.
