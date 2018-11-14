@@ -33,25 +33,26 @@ public:
     return (hours - right.hours);
   }
   NumDays operator ++ (int) {
-    NumDays *temp = new NumDays(hours);
+    NumDays temp = *this;
     hours += 1;
-    this->calcDays(hours);
-    return *temp;
+    days = this->calcDays(hours);
+
+    return temp;
   }
   NumDays operator ++ () {
     hours += 1;
-    this->calcDays(hours);
+    days = this->calcDays(hours);
     return *this;
   }
   NumDays operator -- (int) {
     NumDays *temp = new NumDays(hours);
     hours -= 1;
-    this->calcDays(hours);
+    days = this->calcDays(hours);
     return *temp;
   }
   NumDays operator -- () {
     hours -= 1;
-    this->calcDays(hours);
+    days = this->calcDays(hours);
     return *this;
   }
 };
