@@ -15,23 +15,7 @@ public:
   ~Numbers() {
     delete nums;
   }
-  void getNums() {
-    int count{0};
 
-    while(count < SIZE) {
-      cout << "Enter number " << count + 1 << ": ";
-      int temp{0};
-      cin >> temp;
-
-      if (temp <= 0) {
-        cout << "Number must be greater than 0";
-        cin.clear();
-      } else {
-        nums[count] = temp;
-        count += 1;
-      }
-    }
-  }
   float getAverage() {
     float sum{0};
     for (int i = 0; i < SIZE; i++) {
@@ -53,11 +37,17 @@ public:
     }
     return low;
   }
+  void saveNumber(int number, int index) {
+    nums[index] = number;
+  }
+  int getNumber(int index) {
+    return nums[index];
+  }
 
   void printResults() {
     cout << "\nNums: ";
     for (int i = 0; i < SIZE; i++) {
-      cout << " " << nums[i];
+      cout << this->getNumber(i) << " ";
     }
 
     cout << "\nAverage: " << this->getAverage() << endl;

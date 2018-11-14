@@ -3,11 +3,11 @@ Design a class that has an array of floating-point numbers. The constructor
 should accept an integer argument and dynamically allocate the array to hold
 that many numbers. The destructor should free the memory held by the array.
 In addition, there should be member functions to perform the following operations:
-    •Store a number in any element of the array
-    •Retrieve a number from any element of the array
-    •Return the highest value stored in the array
-    •Return the lowest value stored in the array
-    •Return the average of all the numbers stored in the array
+•Store a number in any element of the array
+•Retrieve a number from any element of the array
+•Return the highest value stored in the array
+•Return the lowest value stored in the array
+•Return the average of all the numbers stored in the array
 
 •Write a program to demonstrate the class. The program should prompt the user
 for how many numbers they would like to store and this should be the argument
@@ -34,7 +34,23 @@ int main() {
   } else {
     exit(EXIT_FAILURE);
   }
-  nums->getNums();
+
+  int index{0};
+
+  while(index < size) {
+    cout << "Enter number " << index + 1 << ": ";
+    int input_number{0};
+    cin >> input_number;
+
+    if (input_number <= 0) {
+      cout << "Number must be greater than 0";
+      cin.clear();
+    } else {
+      nums->saveNumber(input_number, index);
+      index += 1;
+    }
+  }
+
   nums->printResults();
 
   delete nums;
