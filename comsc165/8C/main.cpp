@@ -1,10 +1,10 @@
 #include<iostream>
 #include<string>
 #include "NumDays.h"
-#include "TimeOff.h";
+#include "TimeOff.h"
 using namespace std;
 
-//driver function to opearte all the functions
+
 int main()
 {
   TimeOff inst; //object creation

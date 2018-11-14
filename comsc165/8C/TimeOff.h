@@ -2,11 +2,10 @@
 #define TIMEOFF_H
 #include <iostream>
 #include <string>
-#include "NumDays.h";
+#include "NumDays.h"
 using namespace std;
 
-class TimeOff
-{
+class TimeOff {
   NumDays maxSickDays; //max sick leave
   NumDays sickTaken; //sicktaken
   NumDays maxVacation; //max vaction
@@ -15,69 +14,96 @@ class TimeOff
   NumDays unpaidTaken; //inpaid taken
   string name; //name
   int  employeeId; //emp id
-  int monthsWorked;//how many months he worked
 
 public:
   TimeOff() {
 
   }
   int getmaxSickDays() {
-      return maxSickDays.days / 8;
+      return maxSickDays.getDays();
   };
   void setmaxSickDays(int n) {
-    maxSickDays.days = n;
+    maxSickDays = NumDays(n);
   };
   int getsickTaken() {
-    return sickTaken.days;
+    return sickTaken.getDays();
   };
   void setsickTaken(int n) {
-    sickTaken.days = n;
+    sickTaken = NumDays(n);
   };
   int getmaxVacation() {
-    return maxVacation.days / 8;
+    return maxVacation.getDays();
   };
   void setmaxVacation(int n) {
-    maxVacation.days = n;
+    if (n > 240) {
+      maxVacation = NumDays(240);
+    } else {
+      maxVacation = NumDays(n);
+    }
   };
-  int getvacTaken(); {
-    return vacTaken.days;
+  int getvacTaken() {
+    return vacTaken.getDays();
   };
   void setvacTaken(int n) {
-    vacTaken.days = n;
+    vacTaken = NumDays(n);
   };
   int getmaxUnpaid() {
-    return maxUnpaid.days;
+    return maxUnpaid.getDays();
   };
   void setmaxUnpaid(int n) {
-    maxUnpaid.days = n;
+    maxUnpaid = NumDays(n);
   };
   int getunpaidTaken() {
-    return unpaidTaken;
+    return unpaidTaken.getDays();
   };
   void setunpaidTaken(int n) {
-    unpaidTaken.days = n;
+    unpaidTaken = NumDays(n);
   };
 
   void calculate() {
-    if((monthsWorked * 12) <= 240) {
-      setmaxVacation(monthsWorked * 12);
-    } else {
-      setmaxVacation(240);
-      setmaxSickDays(monthsWorked * 8);
-    }
-  };
+    cout << maxVacation.getDays() << endl;
+    cout << vacTaken.getDays() << endl;
+    setmaxSickDays(maxSickDays.getDays() - sickTaken.getDays());
+    setmaxUnpaid(maxUnpaid.getDays() - unpaidTaken.getDays());
+  }
 
   void getDetails() {
-    cout << "\n enter Employee name:";//read name
-    cin >> name;
-    cout << "\n Enter Id:"; //read emp id
+    cout << "Enter Employee name: " << endl;
+    getline(cin, name);
+    cin.clear();
+    int temp{0};
+
+    cout << "Enter Id: " << endl;
     cin >> employeeId;
-    cout << "\nHow many months has the Employee worked for the company? ";//read how mny months worked
-    cin >> monthsWorked;
-  }; //read details
+
+    cout << "How many max sick hours? " << endl;
+    cin >> temp;
+    setmaxSickDays(temp);
+
+    cout << "How many sick hours taken? " << endl;
+    cin >> temp;
+    setsickTaken(temp);
+
+    cout << "How many max vacation hours? " << endl;
+    cin >> temp;
+    setmaxVacation(temp);
+
+    cout << "How many vacation hours taken? " << endl;
+    cin >> temp;
+    setvacTaken(temp);
+
+    cout << "How many max upaid hours? " << endl;
+    cin >> temp;
+    setmaxUnpaid(temp);
+
+    cout << "How many unpaid hours taken? " << endl;
+    cin >> temp;
+    setunpaidTaken(temp);
+  };
   void printDetails() {
-    cout << "\n Available vacation:" << getmaxVacation() << " Days";
-    cout << "\n Available sick leave:" << getmaxSickDays() << " Days";
+    cout << "Available vacation: " << maxVacation.getDays() - vacTaken.getDays() << " Days." << endl;
+    cout << "Available sick leave: " << getmaxSickDays() << " Days." << endl;
+    cout << "Available unpaid days: " << getmaxUnpaid() << " Days." << endl;
   };
 };
 #endif
