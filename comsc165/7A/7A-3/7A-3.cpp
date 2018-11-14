@@ -7,51 +7,51 @@ void runPartOne();
 void runPartTwo();
 
 class SavingsAccount {
-  private:
-    int dollars{0};
-    int cents{0};
-  public:
-    void _parseDeposit(float c, bool deposit) {
-      if (deposit) {
-        c *= 100;
-        float currentTotal = cents + (dollars * 100);
-        c += currentTotal;
-        dollars = 0;
-        cents = 0;
+private:
+  int dollars{0};
+  int cents{0};
+public:
+  void _parseDeposit(float c, bool deposit) {
+    if (deposit) {
+      c *= 100;
+      float currentTotal = cents + (dollars * 100);
+      c += currentTotal;
+      dollars = 0;
+      cents = 0;
 
-        while(c >= 100) {
-          dollars += 1;
-          c -= 100;
-        }
-        cents += c;
-      } else {
-        c *= -100;
-        int currentTotal = cents + (dollars * 100);
-        c += currentTotal;
-        dollars = 0;
-        cents = 0;
-
-        while(c >= 100) {
-          dollars += 1;
-          c -= 100;
-        }
-        cents = c;
+      while(c >= 100) {
+        dollars += 1;
+        c -= 100;
       }
+      cents += c;
+    } else {
+      c *= -100;
+      int currentTotal = cents + (dollars * 100);
+      c += currentTotal;
+      dollars = 0;
+      cents = 0;
+
+      while(c >= 100) {
+        dollars += 1;
+        c -= 100;
+      }
+      cents = c;
     }
-    void openAccount(float initDeposit) {
-      this->_parseDeposit(initDeposit, true);
-    }
-    void makeDeposit(float deposit) {
-      this->_parseDeposit(deposit, true);
-    }
-    void makeWithdrawal(float amount) {
-      this->_parseDeposit(amount, false);
-    }
-    void getBalance() const {
-      string zero_or_empty(".");
-      if (cents < 10) zero_or_empty = ".0";
-      cout << "Balance: $" << setprecision(2) << fixed << dollars << zero_or_empty << cents << endl;
-    }
+  }
+  void openAccount(float initDeposit) {
+    this->_parseDeposit(initDeposit, true);
+  }
+  void makeDeposit(float deposit) {
+    this->_parseDeposit(deposit, true);
+  }
+  void makeWithdrawal(float amount) {
+    this->_parseDeposit(amount, false);
+  }
+  void getBalance() const {
+    string zero_or_empty(".");
+    if (cents < 10) zero_or_empty = ".0";
+    cout << "Balance: $" << setprecision(2) << fixed << dollars << zero_or_empty << cents << endl;
+  }
 };
 
 int main() {
@@ -74,7 +74,7 @@ void runPartOne() {
 void runPartTwo() {
   cout << "\n\nPART 2:" << endl;
   SavingsAccount bank1;
-  cout << "How much money would you like to open the account with? ";
+  cout << "Please input the initial deposit to open account? ";
   float openAccount;
   cin >> openAccount;
   bank1.openAccount(openAccount);
@@ -82,30 +82,36 @@ void runPartTwo() {
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   bank1.getBalance();
 
-  bool askUser{true};
-  while(askUser) {
-    cout << "\nEnter 1 for: DEPOSIT" << endl;
-    cout << "Enter -1 for: WITHDRAWAL" << endl << endl;
-    int answer;
-    cin >> answer;
+  bool askUser{true}, withdrawalFlag{false};
 
-    if (answer == 1) {
+  while(askUser) {
+    cout << "Would you like to make a deposit (Y/N)? ";
+    char answer;
+    cin >> answer;
+    if (answer == 'y' || answer == 'Y') {
       cout << "Enter Deposit Amount: ";
       float deposit;
       cin >> deposit;
       bank1.makeDeposit(deposit);
       bank1.getBalance();
       cout << endl;
-      askUser = false;
-    } else if (answer == -1) {
-      cout << "Enter Withdrawal Amount: ";
-      float withdrawal;
+    } else if (answer == 'n' || answer == 'N') {
+      withdrawalFlag = true;
+      cout << "Would you like to enter a withdrawal (Y/N)?";
+      char withdrawal;
       cin >> withdrawal;
       cin.clear();
-      bank1.makeWithdrawal(withdrawal);
-      bank1.getBalance();
-      cout << endl;
-      askUser = false;
+      if (withdrawal == 'Y' || withdrawal == 'y') {
+        cout << "How much would you like to withdrawal? ";
+        float amountToWithdrawal;
+        cin >> amountToWithdrawal;
+        cin.clear();
+        bank1.makeWithdrawal(amountToWithdrawal);
+        bank1.getBalance();
+        cout << endl;
+      } else {
+        askUser = false;
+      }
     } else {
       cout << "That is not a valid input. Please try again.";
       cin.clear();
