@@ -1,6 +1,5 @@
 #ifndef NUMDAYS_H
 #define NUMDAYS_H
-#include <iostream>
 using namespace std;
 
 class NumDays {
