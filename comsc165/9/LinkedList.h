@@ -16,10 +16,27 @@ class LinkedList {
     ~LinkedList();
     LinkedList(const LinkedList &oldList);
 
-    void appendNode(double value);
+    void appendNode(double data) {
+      ListNode *newNode;
+      ListNode *nextNode;
+
+      newNode = new ListNode;
+      newNode->value = data;
+      newNode->next = nullptr;
+
+      if (head) {
+        nextNode = head;
+        while(nextNode->next)
+          nextNode = nextNode->next;
+
+        nextNode->next = newNode;
+      } else {
+        head = newNode;
+      }
+    }
     void insertNode(double value, double location);
     void deleteNode(double value);
-    void display();
+    void display() const;
     void reverseList();
 };
 #endif
