@@ -107,6 +107,18 @@ class LinkedList {
       }
       std::cout << "\t--- END of List --- " << std::endl;
     };
-    void reverseList();
+    void reverseList() {
+      ListNode *nextNode = head; // looks forward
+      ListNode *prevNode = nullptr; // is prior node
+      ListNode *currentNode = head; // looks behind.
+
+      while(nextNode->next) { // as long as there is another node.
+        currentNode->next = prevNode; // assign current node to prior node.
+        currentNode = currentNode->next; // move current pointer to next node (although it looks behind)
+        nextNode = nextNode->next; //  move nextPtr to next node (looks ahead);
+      }
+      nextNode->next = prevNode; // at the end of the list. point to the prior node.
+      head = nextNode; // make head the last node in the prev. list.
+    }
 };
 #endif
