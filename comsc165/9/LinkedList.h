@@ -38,7 +38,7 @@ class LinkedList {
       }
     }
     void insertNode(double d, double location) {
-      ListNode *newNode;
+      ListNode *newNode = new ListNode;
       ListNode *nodePtr;
       newNode->data = d;
       newNode->next = nullptr;
@@ -61,7 +61,35 @@ class LinkedList {
         head->next = newNode;
       }
     }
-    void deleteNode(double data);
+    void deleteNode(double d) {
+      ListNode *nodePtr;
+
+      if(head->data == d) {
+        head = head->next;
+      } else {
+        nodePtr = head;
+        while(nodePtr->next && nodePtr->next->data != d)
+          nodePtr = nodePtr->next;
+
+        // ASSUME: the next node is the one to delete...
+        // Check if we'er at the end of the list?
+        if (nodePtr->next == nullptr) {
+          // YES - simply delete the node.
+          delete nodePtr;
+        } else {
+          // is there an item after the one we intend to delete?
+          if (nodePtr->next->next) {
+            // YES - assign to that node.
+            nodePtr->next = nodePtr->next->next;
+          } else {
+            // NO - then just delete from memory
+            delete nodePtr->next;
+            //& re-assign next to an empty address.
+            nodePtr->next = nullptr;
+          }
+        }
+      }
+    }
     void display() const {
       ListNode *nextNode;
 
