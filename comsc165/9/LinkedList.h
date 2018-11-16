@@ -1,5 +1,6 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
+#include <iostream>
 
 class LinkedList {
   private:
@@ -13,8 +14,10 @@ class LinkedList {
     LinkedList() {
       head = nullptr;
     }
-    ~LinkedList();
     LinkedList(const LinkedList &oldList);
+    ~ LinkedList() {
+      delete head;
+    }
 
     void appendNode(double d) {
       ListNode *newNode;
@@ -36,22 +39,22 @@ class LinkedList {
     }
     void insertNode(double data, double location);
     void deleteNode(double data);
-    int display() const {
+    void display() const {
       ListNode *nextNode;
 
-      if (head) {
+      if(head) {
         int nodeCount{0};
-        cout << "Head: " << head.data << endl;
-        nextNode = head->next;
+        std::cout << "Head: " << head->data << std::endl;
+        nextNode = head;
         while(nextNode->next) {
-          ++nodeCount;
-          cout << "Node #" << nodeCount << " : " << nextNode.data << endl;
           nextNode = nextNode->next;
+          ++nodeCount;
+          std::cout << "Node #" << nodeCount << " : " << nextNode->data << std::endl;
         }
-        return 0;
+      } else {
+        std::cout << "Head: " << head->data << std::endl;
       }
-      cout << head->data;
-      return 0;
+      std::cout << "\t--- END of List --- " << std::endl;
     };
     void reverseList();
 };
