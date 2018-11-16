@@ -37,10 +37,10 @@ public:
     }
     return low;
   }
-  void saveNumber(int number, int index) {
+  void saveNumber(float number, int index) {
     nums[index] = number;
   }
-  int getNumber(int index) {
+  float getNumber(int index) {
     return nums[index];
   }
 

@@ -61,10 +61,9 @@ public:
   };
 
   void calculate() {
-    cout << maxVacation.getDays() << endl;
-    cout << vacTaken.getDays() << endl;
+    // cout << maxVacation.getDays() << endl;
+    // cout << vacTaken.getDays() << endl;
     setmaxSickDays(maxSickDays.getDays() - sickTaken.getDays());
-    setmaxUnpaid(maxUnpaid.getDays() - unpaidTaken.getDays());
   }
 
   void getDetails() {
@@ -103,7 +102,7 @@ public:
   void printDetails() {
     cout << "Available vacation: " << maxVacation.getDays() - vacTaken.getDays() << " Days." << endl;
     cout << "Available sick leave: " << getmaxSickDays() << " Days." << endl;
-    cout << "Available unpaid days: " << getmaxUnpaid() << " Days." << endl;
+    cout << "Available unpaid days: " << maxUnpaid.getDays() - unpaidTaken.getDays() << " Days." << endl;
   };
 };
 #endif

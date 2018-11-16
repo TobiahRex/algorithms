@@ -39,7 +39,7 @@ int main() {
 
   while(index < size) {
     cout << "Enter number " << index + 1 << ": ";
-    int input_number{0};
+    float input_number{0};
     cin >> input_number;
 
     if (input_number <= 0) {
