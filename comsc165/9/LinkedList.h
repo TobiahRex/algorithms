@@ -37,7 +37,30 @@ class LinkedList {
         head = newNode;
       }
     }
-    void insertNode(double data, double location);
+    void insertNode(double d, double location) {
+      ListNode *newNode;
+      ListNode *nodePtr;
+      newNode->data = d;
+      newNode->next = nullptr;
+
+      int i{0};
+      if (i < location) {
+        nodePtr = head;
+        //                insertHere (2)
+        // nodePtr (1) -> nodePtr(1).next
+
+        // newNode.next = nodePtr.next;
+        // nodePtr.next = newNode
+        for (int i = 0; i < location; i++) {
+          nodePtr = nodePtr->next;
+        }
+        newNode->next = nodePtr->next;
+        nodePtr->next = newNode;
+      } else if(location == 0) {
+        newNode->next = head->next;
+        head->next = newNode;
+      }
+    }
     void deleteNode(double data);
     void display() const {
       ListNode *nextNode;

@@ -10,7 +10,7 @@ int main() {
 
   // LinkedList secondList = firstList;
   //
-  // firstList.insertNode(5, 2);
+  firstList.insertNode(5, 2);
   // firstList.deleteNode(6);
   firstList.display();
   //
