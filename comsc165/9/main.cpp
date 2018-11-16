@@ -8,16 +8,18 @@ int main() {
   firstList.appendNode(4);
   firstList.appendNode(6);
 
-  // LinkedList secondList = firstList;
-  //
+  LinkedList secondList = firstList;
+
   firstList.insertNode(5, 0);
   firstList.display();
   firstList.deleteNode(2);
   firstList.display();
-  //
-  // secondList.display();
-  // secondList.reverseList();
-  // secondList.display();
+
+  cout << "Second List: " << endl;
+  secondList.display();
+  secondList.reverseList();
+  cout << "Second List REVERSED: " << endl;
+  secondList.display();
 
   return 0;
 }

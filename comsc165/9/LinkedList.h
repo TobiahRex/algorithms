@@ -14,8 +14,11 @@ class LinkedList {
     LinkedList() {
       head = nullptr;
     }
-    LinkedList(const LinkedList &oldList);
+    LinkedList(const LinkedList &oldList) {
+      head = oldList.head;
+    }
     ~ LinkedList() {
+      std::cout << "Removing List" << std::endl;
       delete head;
     }
 
@@ -108,17 +111,17 @@ class LinkedList {
       std::cout << "\t--- END of List --- " << std::endl;
     };
     void reverseList() {
-      ListNode *nextNode = head; // looks forward
       ListNode *prevNode = nullptr; // is prior node
       ListNode *currentNode = head; // looks behind.
+      ListNode *nextNode = nullptr; // looks forward
 
-      while(nextNode->next) { // as long as there is another node.
-        currentNode->next = prevNode; // assign current node to prior node.
-        currentNode = currentNode->next; // move current pointer to next node (although it looks behind)
-        nextNode = nextNode->next; //  move nextPtr to next node (looks ahead);
+      while(currentNode != nullptr) {
+        nextNode = currentNode->next;
+        currentNode->next = prevNode;
+        prevNode = currentNode;
+        currentNode = nextNode;
       }
-      nextNode->next = prevNode; // at the end of the list. point to the prior node.
-      head = nextNode; // make head the last node in the prev. list.
+      head = prevNode;
     }
 };
 #endif
