@@ -7,12 +7,15 @@ int main() {
   firstList.appendNode(2);
   firstList.appendNode(4);
   firstList.appendNode(6);
+  firstList.display();
 
   LinkedList secondList = firstList;
+  secondList.display();
 
-  firstList.insertNode(5, 0);
+  // the second parameter for "insertNode" was an extra feature I added to choose which index to insert the node at in the list.
+  firstList.insertNode(5);
   firstList.display();
-  firstList.deleteNode(2);
+  firstList.deleteNode(6);
   firstList.display();
 
   cout << "Second List: " << endl;

@@ -5,7 +5,7 @@
 class LinkedList {
   private:
     struct ListNode {
-      double data;
+      int data;
       struct ListNode *next;
     };
 
@@ -22,7 +22,7 @@ class LinkedList {
       delete head;
     }
 
-    void appendNode(double d) {
+    void appendNode(int d) {
       ListNode *newNode;
       ListNode *nextNode;
 
@@ -40,31 +40,36 @@ class LinkedList {
         head = newNode;
       }
     }
-    void insertNode(double d, double location) {
-      ListNode *newNode = new ListNode;
+    void insertNode(int num) {
+      ListNode *newNode;
       ListNode *nodePtr;
-      newNode->data = d;
-      newNode->next = nullptr;
+      ListNode *prevNode = nullptr;
 
-      int i{0};
-      if (i < location) {
+      newNode = new ListNode;
+      newNode->data = num;
+
+      if (!head) {
+        head = newNode;
+        newNode->next = nullptr;
+      } else {
         nodePtr = head;
-        //                insertHere (2)
-        // nodePtr (1) -> nodePtr(1).next
+        prevNode = nullptr;
 
-        // newNode.next = nodePtr.next;
-        // nodePtr.next = newNode
-        for (int i = 0; i < location; i++) {
+        while(nodePtr != nullptr && nodePtr->data < num) {
+          prevNode = nodePtr;
           nodePtr = nodePtr->next;
         }
-        newNode->next = nodePtr->next;
-        nodePtr->next = newNode;
-      } else if(location == 0) {
-        newNode->next = head->next;
-        head->next = newNode;
+
+        if (prevNode == nullptr) {
+          head = newNode;
+          newNode->next = nodePtr;
+        } else {
+          prevNode->next = newNode;
+          newNode->next = nodePtr;
+        }
       }
     }
-    void deleteNode(double d) {
+    void deleteNode(int d) {
       ListNode *nodePtr;
 
       if(head->data == d) {
