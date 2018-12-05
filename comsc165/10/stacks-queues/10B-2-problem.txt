@@ -1,0 +1,14 @@
+Create a Dynamic Queue to store floats.
+
+•Declare a dynamic float queue class which should have a structure
+for the queue nodes, constructor, destructor and queue operation
+functions to:
+add an element to the queue;
+remove an element from the queue;
+check if the queue is empty;
+clear the queue.
+
+•Write a program to create a dynamic queue object.
+Enqueue 5 items using 5 numbers generated using a for loop,
+the numbers will be the counter incremented by 10%.
+Dequeue, retrieve and display all the items in the queue.
