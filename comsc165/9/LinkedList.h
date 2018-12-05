@@ -1,6 +1,7 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 #include <iostream>
+using namespace std;
 
 class LinkedList {
   private:
@@ -14,14 +15,21 @@ class LinkedList {
     LinkedList() {
       head = nullptr;
     }
-    LinkedList(const LinkedList &oldList) {
-      head = oldList.head;
+    LinkedList(const LinkedList &oldList) { // 2 4 6
+      ListNode *nodePtr = nullptr;
+
+      nodePtr = oldList.head;
+
+      while(nodePtr != nullptr) {
+        appendNode(nodePtr->data);
+        nodePtr = nodePtr->next;
+        // cout << nodePtr->data << endl;
+      }
     }
     ~ LinkedList() {
       std::cout << "Removing List" << std::endl;
       delete head;
     }
-
     void appendNode(int d) {
       ListNode *newNode;
       ListNode *nextNode;
@@ -101,17 +109,10 @@ class LinkedList {
     void display() const {
       ListNode *nextNode;
 
-      if(head) {
-        int nodeCount{0};
-        std::cout << "Head: " << head->data << std::endl;
-        nextNode = head;
-        while(nextNode->next) {
-          nextNode = nextNode->next;
-          ++nodeCount;
-          std::cout << "Node #" << nodeCount << " : " << nextNode->data << std::endl;
-        }
-      } else {
-        std::cout << "Head: " << head->data << std::endl;
+      nextNode = head;
+      while(nextNode){
+        std::cout << nextNode->data << std::endl;
+        nextNode = nextNode->next;
       }
       std::cout << "\t--- END of List --- " << std::endl;
     };

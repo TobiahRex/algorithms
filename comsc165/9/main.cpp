@@ -18,10 +18,8 @@ int main() {
   firstList.deleteNode(6);
   firstList.display();
 
-  cout << "Second List: " << endl;
   secondList.display();
   secondList.reverseList();
-  cout << "Second List REVERSED: " << endl;
   secondList.display();
 
   return 0;

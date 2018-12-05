@@ -1,0 +1,14 @@
+Create a Dynamic Stack to store strings.
+
+•Design a class that stores strings on
+a dynamic stack. The strings should not be fixed in length.
+The class should have a structure for the stack nodes, constructor,
+destructor and stack operation functions to:
+add a value to the stack;
+remove a value from the stack;
+check if the stack is empty.
+
+•Write a program to create a dynamic stack object. Push the strings
+"one", "two", and "three" onto the stack. Pop the three strings from
+the stack and display them. Call the pop function again to see what
+your program displays when you pop an empty stack.

@@ -101,7 +101,7 @@ private:
   bool mailingList;
 
 public:
-  CustomerData()    //default constructor
+  CustomerData():PersonData()    //default constructor
   {
     customerNumber = 0;
     mailingList = false;
