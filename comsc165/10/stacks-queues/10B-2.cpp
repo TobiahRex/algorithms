@@ -6,11 +6,11 @@ private:
   struct QueueNode {
     float data;
     struct QueueNode* next;
-  }
+  };
   QueueNode *front;
   QueueNode *rear;
   int numItems;
-
+public:
   Queue() {
     front = nullptr;
     rear = nullptr;
@@ -34,38 +34,42 @@ private:
     }
     numItems += 1;
   }
-  float dequeue() {
+  void dequeue(float &f) {
     QueueNode *temp = nullptr;
-    float returnData;
     if (isEmpty()) {
       cout << "Queue is empty." << endl;
     } else {
-      returnData = front->data;
+      f = front->data;
       temp = front;
       front = front->next;
       delete temp;
       numItems -= 1;
     }
-
-    return returnData;
   }
+
   bool isEmpty() const {
     bool status = false;
     if (numItems == 0) status = true;
     return status;
   }
   void clear() {
-    while(!isEmpty()) dequeue();
+    float temp;
+    while(!isEmpty()) {
+      dequeue(temp);
+      cout << temp << endl;
+    };
   }
-}
+};
 
 int main() {
   Queue numsQueue;
-  for (let i = 1; i <= 5; i++) {
+  for (int i = 1; i <= 5; i++) {
     numsQueue.enqueue(i * 1.1);
   }
   while(!numsQueue.isEmpty()) {
-    cout << numsQueue.dequeue() << endl;
+    float temp;
+    numsQueue.dequeue(temp);
+    cout << temp << endl;
   }
   return 0;
 }
