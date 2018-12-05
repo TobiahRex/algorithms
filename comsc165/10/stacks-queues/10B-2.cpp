@@ -49,8 +49,14 @@ private:
 
     return returnData;
   }
-  bool isEmpty() const;
-  void clear();
+  bool isEmpty() const {
+    bool status = false;
+    if (numItems == 0) status = true;
+    return status;
+  }
+  void clear() {
+    while(!isEmpty()) dequeue();
+  }
 }
 
 int main() {
