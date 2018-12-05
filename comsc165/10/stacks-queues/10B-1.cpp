@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <Stack.h>
 using namespace std;
 
 class Stack {
@@ -53,8 +52,12 @@ public:
     }
     return poppedString;
   }
-  bool isEmpty();
-}
+  bool isEmpty() {
+    bool status{false};
+    if (!top) status = true;
+    return status;
+  }
+};
 
 
 int main() {
